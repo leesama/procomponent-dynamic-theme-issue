@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Suspense, lazy } from "react";
+import { Button, ConfigProvider } from "antd";
+import "antd/dist/antd.variable.min.css";
+const LazyProTable = lazy(() => import("./LazyProTable"));
+const LazyButton = lazy(() => import("./LazyButton"));
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => (
+  <div className="App">
+    <Button
+      type="primary"
+      onClick={() =>
+        ConfigProvider.config({
+          theme: {
+            primaryColor: "#25b864",
+          },
+        })
+      }
+    >
+      change color
+    </Button>
+    <Suspense fallback={"loading"}>
+      {/* <LazyProTable /> */}
+      <LazyButton />
+    </Suspense>
+  </div>
+);
 
 export default App;
