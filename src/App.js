@@ -19,7 +19,7 @@ const App = () => (
       change color
     </Button>
     <Suspense fallback={"loading"}>
-      {/* <LazyProTable /> */}
+      <LazyProTable />
       <LazyButton />
     </Suspense>
   </div>
